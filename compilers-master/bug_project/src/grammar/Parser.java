@@ -27,16 +27,20 @@ public class Parser {
 	public void analyze() throws SyntaxError, IOException {
 		token = lexer.scan();
 		statementSequence();
-		System.out.println("ACCEPTED");
+		if (token.getTag() == Tag.EOF) {
+			System.out.println("ACCEPTED");
+		} else {
+			throw new SyntaxError();
+		}
 	}
+
 
 	private void statementSequence() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.VAR || token.getTag() == Tag.ID || token.getTag() == Tag.PRINT  ||
 		    token.getTag() == Tag.WHILE || token.getTag() == (int) '{' || token.getTag() == Tag.IF) {
 		sentence();
 		statementSequence();
-		} else {
-			//do nothing
+	} else {
 		}
 	}
 

@@ -38,7 +38,22 @@ public class Lexer {
 	}
 
 	public Token scan() throws IOException {
+
+		// Ignore everything inside the for
 		for ( ; ; readch() ) {
+			// comment check
+			if(peek == '/'){
+				readch();
+				if(peek == '/'){
+					while (peek != '\n') {
+						readch();
+					}
+					line = line + 1;
+				} else {
+					return new Token('/');
+				}
+			}
+			// empty space check
 			if (peek == ' ' || peek == '\t' || peek == '\r') {
 				continue;
 			} else if (peek == '\n') {
