@@ -1,5 +1,7 @@
 var i;
 
+// Esto es un comentario.
+
 i = 0;
 while (i < 6) {
 	print("i = ", i);
@@ -10,3 +12,4 @@ while (i < 6) {
 	}
 	i = i + 1;
 }
+// Ultimo comentario.
